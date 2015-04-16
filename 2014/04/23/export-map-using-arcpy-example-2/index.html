@@ -1,0 +1,152 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>sshuair › arcpy批量出图-Example2</title>
+  <meta name="author" content="sshuair">
+  
+  <meta name="description" content="继arcpy批量出图-Example1后，又看了不少arcpy方面的文档，而且随着arcgis10.2.2的发布，arcpy的功能进一步加强，相信arcpy会却来越多的成为公司生产过程中的利器。Example1是实验室里自己出图用，这次出图的程序是应一个公司的需求进行编码的。
+需求说明对于一个打开的MXD文档，需要将其中可见的图层分别出图，对于每个可见的layer分为以下两种情况：">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="arcpy批量出图-Example2"/>
+  <meta property="og:site_name" content="sshuair"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/favicon.png" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="sshuair" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-58993338-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+
+
+<body>
+  <header id="header"><div class="meta inner">
+  <h1><a href="/">sshuair</a></h1>
+  <h2 id="header-h2">书写是为了更好的思考</h2>
+  <nav id="main-nav">
+    <ul>
+      
+      <li><a href="/">首页</a></li>
+      
+      <li><a href="/archives">文章归档</a></li>
+      
+      <li><a href="/about">关于</a></li>
+      
+    </ul>
+    <div class="clearfix"></div>
+  </nav>
+</div>
+<div class="clearfix"></div>
+</header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  <div class="post-content">
+    <header>
+      
+  
+    <h1 class="title">arcpy批量出图-Example2</h1>
+  
+
+      
+      <time datetime="2014-04-23T14:40:07.000Z">2014-04-23</time>
+      
+    </header>
+    <div class="entry">
+      
+        <p>继<a href="http://soarleaf.github.io/2014/04/02/export-map-using-arcpy-example-1" target="_blank" rel="external">arcpy批量出图-Example1</a><br>后，又看了不少arcpy方面的文档，而且随着arcgis10.2.2的发布，arcpy的功能进一步加强，相信arcpy会却来越多的成为公司生产过程中的利器。Example1是实验室里自己出图用，这次出图的程序是应一个公司的需求进行编码的。</p>
+<h2 id="需求说明">需求说明</h2><p>对于一个打开的MXD文档，需要将其中可见的图层分别出图，对于每个可见的layer分为以下两种情况：<br><a id="more"></a></p>
+<ol>
+<li>如果该图层的Label Features是打开的， 需要出两个图：  <ul>
+<li>图形层，需要将该图层的Label Features关闭，再出图;  </li>
+<li>Label Features层，需要将该图层的transparency设置为0%。</li>
+</ul>
+</li>
+<li>该图层的Label Features未打开，那么只需要出该layer 的图形层即可，Label Features层不需要出图。</li>
+</ol>
+<h2 id="源码">源码</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> arcpy</span><br><span class="line"></span><br><span class="line">fpMXD = arcpy.GetParameterAsText(<span class="number">0</span>) <span class="comment">#mxd文件路径</span></span><br><span class="line">outputDir = arcpy.GetParameterAsText(<span class="number">1</span>) <span class="comment">#输出文件路径</span></span><br><span class="line">outputType = arcpy.GetParameterAsText(<span class="number">2</span>) <span class="comment">#选择输出文件类型</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    <span class="comment">#fpMXD = "E:\users\wangs\YuWenLi\data\ExportMap.mxd" #mxd文件路径，注意为英文路径</span></span><br><span class="line">    mxd = arcpy.mapping.MapDocument(fpMXD)</span><br><span class="line">    layersVisibleOn = []  <span class="comment">#存储可见的所有的图层，即每个layer的properties的visible属性为true</span></span><br><span class="line">    frames = arcpy.mapping.ListDataFrames(mxd,<span class="string">"*"</span>)</span><br><span class="line">    <span class="keyword">for</span> df <span class="keyword">in</span> frames:</span><br><span class="line">        layers = arcpy.mapping.ListLayers(mxd,<span class="string">"*"</span>,df)</span><br><span class="line">        <span class="keyword">for</span> layer <span class="keyword">in</span> layers:</span><br><span class="line">            <span class="keyword">if</span> layer.visible == <span class="keyword">True</span> <span class="keyword">and</span> (<span class="keyword">not</span>(layer.isGroupLayer)):</span><br><span class="line">                layersVisibleOn.append(layer)</span><br><span class="line">    <span class="comment">#将所有要出图的图层关闭</span></span><br><span class="line">    <span class="keyword">for</span> lyr <span class="keyword">in</span> layersVisibleOn:</span><br><span class="line">        lyr.visible = <span class="keyword">False</span></span><br><span class="line">    <span class="comment">#出图</span></span><br><span class="line">    <span class="keyword">for</span> lyr <span class="keyword">in</span> layersVisibleOn:</span><br><span class="line">        lyr.visible = <span class="keyword">True</span></span><br><span class="line">        <span class="comment">#Label Features不显示</span></span><br><span class="line">        <span class="comment">#outputPathFeature = os.path.dirname(fpMXD)+"\\"+lyr.name</span></span><br><span class="line">        <span class="keyword">if</span> lyr.showLabels == <span class="keyword">True</span>:</span><br><span class="line">            lyr.showLabels = <span class="keyword">False</span></span><br><span class="line">            outputPathFeature = outputDir + <span class="string">"\\"</span>+lyr.name</span><br><span class="line">            <span class="keyword">if</span> outputType == <span class="string">"JPEG"</span>:</span><br><span class="line">                arcpy.mapping.ExportToJPEG(mxd, outputPathFeature, resolution = <span class="number">200</span>)</span><br><span class="line">            <span class="keyword">elif</span> outputType ==<span class="string">"AI"</span>:</span><br><span class="line">                arcpy.mapping.ExportToAI(mxd, outputPathFeature)</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                print(<span class="string">"没有这种格式！"</span>)</span><br><span class="line">            <span class="comment">#只显示Label Features, 相应图层的Transparent为100%</span></span><br><span class="line">            lyr.showLabels = <span class="keyword">True</span></span><br><span class="line">            lyr.transparency = <span class="number">100</span></span><br><span class="line">            <span class="comment">#outputPathLabel = os.path.dirname(fpMXD)+"\\"+lyr.name+"Label"</span></span><br><span class="line">            outputPathLabel = outputDir+<span class="string">"\\"</span>+lyr.name+<span class="string">"Label"</span></span><br><span class="line">            <span class="keyword">if</span> outputType == <span class="string">"JPEG"</span>:</span><br><span class="line">                arcpy.mapping.ExportToJPEG(mxd, outputPathLabel, resolution = <span class="number">200</span>)</span><br><span class="line">            <span class="keyword">elif</span> outputType ==<span class="string">"AI"</span>:</span><br><span class="line">                arcpy.mapping.ExportToAI(mxd, outputPathLabel)</span><br><span class="line">        <span class="keyword">elif</span> lyr.showLabels == <span class="keyword">False</span>:</span><br><span class="line">            outputPathFeature = outputDir + <span class="string">"\\"</span>+lyr.name</span><br><span class="line">            <span class="keyword">if</span> outputType == <span class="string">"JPEG"</span>:</span><br><span class="line">                arcpy.mapping.ExportToJPEG(mxd, outputPathFeature, resolution = <span class="number">200</span>)</span><br><span class="line">            <span class="keyword">elif</span> outputType ==<span class="string">"AI"</span>:</span><br><span class="line">                arcpy.mapping.ExportToAI(mxd, outputPathFeature)</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                print(<span class="string">"没有这种格式！"</span>)</span><br><span class="line">        lyr.visible = <span class="keyword">False</span></span><br><span class="line">        </span><br><span class="line">    <span class="keyword">del</span> mxd</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    <footer>
+      <div class="alignleft">
+      
+  
+  <div class="categories">
+    <a href="/categories/GIS/">GIS</a>
+  </div>
+
+      
+  
+  <div class="tags">
+    <a href="/tags/GIS/">GIS</a>, <a href="/tags/Python/">Python</a>, <a href="/tags/arcpy/">arcpy</a>
+  </div>
+
+      </div>
+      <div class="clearfix"></div>
+    </footer>
+    
+  </div>
+</article>
+
+
+<section id="comment">
+  
+            <!-- Duoshuo Comment BEGIN -->
+            <div class="ds-thread"></div>
+            <script type="text/javascript">
+                var duoshuoQuery = {short_name:"sshuair"};
+                (function() {
+                    var ds = document.createElement('script');
+                    ds.type = 'text/javascript';ds.async = true;
+                    ds.src = 'http://static.duoshuo.com/embed.js';
+                    ds.charset = 'UTF-8';
+                    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
+                })();
+            </script>
+            <!-- Duoshuo Comment END -->
+      
+  
+</section>
+
+</div></div>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer"><div class="inner"><div class="alignleft">
+  <p>
+  
+    &copy; 2015 sshuair
+  
+  </p>
+  <p>
+    Powered by <a href="http://hexo.io/" >Hexo</a> 
+    and Theme by <a href="http://jiabin.tk" >Byron</a> based on <a href="https://github.com/willerce/hexo-theme-noderce" >Noderce</a>
+  </p>
+
+</div>
+<div class="clearfix"></div></div></footer>
+  <script type="text/javascript">
+
+</script>
+
+</body>
+</html>

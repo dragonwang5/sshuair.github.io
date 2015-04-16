@@ -1,0 +1,146 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>sshuair › IDL创建目录</title>
+  <meta name="author" content="sshuair">
+  
+  <meta name="description" content="最近帮同学利用IDL批量生成目录，研究一番，发现IDL批量处理果然名不虚传。
+
+要求： 给每个用户创建一个文件夹并将一个doc文件复制到每个每个文件夹中，要求doc文件名与文件夹的名字相同。">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="IDL创建目录"/>
+  <meta property="og:site_name" content="sshuair"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/favicon.png" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="sshuair" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-58993338-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+
+
+<body>
+  <header id="header"><div class="meta inner">
+  <h1><a href="/">sshuair</a></h1>
+  <h2 id="header-h2">书写是为了更好的思考</h2>
+  <nav id="main-nav">
+    <ul>
+      
+      <li><a href="/">首页</a></li>
+      
+      <li><a href="/archives">文章归档</a></li>
+      
+      <li><a href="/about">关于</a></li>
+      
+    </ul>
+    <div class="clearfix"></div>
+  </nav>
+</div>
+<div class="clearfix"></div>
+</header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  <div class="post-content">
+    <header>
+      
+  
+    <h1 class="title">IDL创建目录</h1>
+  
+
+      
+      <time datetime="2014-03-01T07:48:33.000Z">2014-03-01</time>
+      
+    </header>
+    <div class="entry">
+      
+        <p>最近帮同学利用IDL批量生成目录，研究一番，发现IDL批量处理果然名不虚传。</p>
+<blockquote>
+<p><strong>要求：</strong> 给每个用户创建一个文件夹并将一个doc文件复制到每个每个文件夹中，要求doc文件名与文件夹的名字相同。<br><a id="more"></a><br>代码如下<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pro make_dir&#10;  fpFather = &#34;C:\Users\wangs\Desktop&#34;  ;&#38656;&#35201;&#21019;&#24314;&#23376;&#25991;&#20214;&#22841;&#30340;&#29238;&#36335;&#24452;&#10;  dirName = [&#39;&#24352;&#19977;&#39;,&#39;&#26446;&#22235;&#39;,&#39;&#29579;&#20108;&#39;,&#39;&#23567;&#26460;&#39;]     ;&#38656;&#35201;&#21019;&#24314;&#30340;&#25991;&#20214;&#22841;&#21517;&#31216;&#10;  fpDoc = &#34;C:\Users\wangs\Desktop\&#24453;&#25335;&#36125;&#25991;&#26723;.docx&#34;  ;&#38656;&#35201;cpoy&#30340;doc&#25991;&#20214;&#36335;&#24452;&#10;  print,fpdoc&#10;  cd, fpFather &#10;  FILE_MKDIR,dirName&#10;  &#10;  docFileName = dirName+&#39;.doc&#39;&#10;  fpDirName =fpFather + &#39;\&#39;+ dirName&#10;  ;&#22797;&#21046;doc&#25991;&#20214;&#65292;&#24182;&#37325;&#21629;&#21517;&#10;  for i = 0L, (size(dirName))[1]-1 do begin&#10;    FILE_COPY, fpDoc, fpDirName[i]  ,/OVERWRITE  &#10;    cd, fpDirName[i]&#10;    FILE_MOVE, &#39;&#24453;&#25335;&#36125;&#25991;&#26723;.docx&#39;, docFileName[i], /OVERWRITE   ;!!!!!&#27492;&#22788;&#30340;&#39;&#24453;&#25335;&#36125;&#25991;&#26723;.doc&#39;&#38656;&#35201;&#21644;fpDoc&#20013;&#30340;&#25991;&#20214;&#21517;&#19968;&#26679;&#10;  endfor&#10;end</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+
+      
+    </div>
+    
+    <footer>
+      <div class="alignleft">
+      
+  
+  <div class="categories">
+    <a href="/categories/RS/">RS</a>
+  </div>
+
+      
+  
+  <div class="tags">
+    <a href="/tags/IDL/">IDL</a>
+  </div>
+
+      </div>
+      <div class="clearfix"></div>
+    </footer>
+    
+  </div>
+</article>
+
+
+<section id="comment">
+  
+            <!-- Duoshuo Comment BEGIN -->
+            <div class="ds-thread"></div>
+            <script type="text/javascript">
+                var duoshuoQuery = {short_name:"sshuair"};
+                (function() {
+                    var ds = document.createElement('script');
+                    ds.type = 'text/javascript';ds.async = true;
+                    ds.src = 'http://static.duoshuo.com/embed.js';
+                    ds.charset = 'UTF-8';
+                    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
+                })();
+            </script>
+            <!-- Duoshuo Comment END -->
+      
+  
+</section>
+
+</div></div>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer"><div class="inner"><div class="alignleft">
+  <p>
+  
+    &copy; 2015 sshuair
+  
+  </p>
+  <p>
+    Powered by <a href="http://hexo.io/" >Hexo</a> 
+    and Theme by <a href="http://jiabin.tk" >Byron</a> based on <a href="https://github.com/willerce/hexo-theme-noderce" >Noderce</a>
+  </p>
+
+</div>
+<div class="clearfix"></div></div></footer>
+  <script type="text/javascript">
+
+</script>
+
+</body>
+</html>

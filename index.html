@@ -1,0 +1,459 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>sshuair</title>
+  <meta name="author" content="sshuair">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+  <meta property="og:site_name" content="sshuair"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/favicon.png" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="sshuair" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-58993338-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+
+
+<body>
+  <header id="header"><div class="meta inner">
+  <h1><a href="/">sshuair</a></h1>
+  <h2 id="header-h2">书写是为了更好的思考</h2>
+  <nav id="main-nav">
+    <ul>
+      
+      <li><a href="/">首页</a></li>
+      
+      <li><a href="/archives">文章归档</a></li>
+      
+      <li><a href="/about">关于</a></li>
+      
+    </ul>
+    <div class="clearfix"></div>
+  </nav>
+</div>
+<div class="clearfix"></div>
+</header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper">
+  <article class="post">
+  <div class="post-content">
+    <header>
+      
+  
+    <h1 class="title"><a href="/2014/11/27/How-Simplicity-Will-Save-GIS/">How Simplicity Will Save GIS </a></h1>
+  
+
+      
+      <time datetime="2014-11-27T15:05:12.000Z">2014-11-27</time>
+      
+    </header>
+    <div class="entry">
+      
+        <p><a href="http://leafletjs.com/">leaflet</a>作者Vladimir Agafonkin在<a href="https://2014.foss4g.org/">FOSS4G 2014</a>上做了一个<code>How Simplicity Will Save GIS</code>的报告，讲述了作者为何create leaflet，以及他在软件开发中的一些思考，很受启发，在此分享给大家。</p>
+<p>重复制造轮子，Vladimir认为GIS相当难学，以作者6年半的地图应用制作经验，他任然无法理清所有GIS的东西。<br>就重复制造轮子这件事，Vladimir通过leaflet表达了自己的观点：如果你对现在已有的工具不满意，那就可以动手做了。</p>
+<p>如何学习，通常我们学习都是跟着教科书一步一步学，可能要等好几年之后才能应用自己所学的东西。Vladimir认为学习驱动式的学习是最好的，你想做个东西，那就去做，一边做一遍去学习，这样相互作用才是最好的学习。<br>
+      
+    </div>
+    
+      
+      <footer>
+        <div class="alignleft">
+          <a href="/2014/11/27/How-Simplicity-Will-Save-GIS/#more" class="more-link">阅读全文 &gt;</a>
+        </div>
+        <div class="clearfix"></div>
+      </footer>
+      
+    
+  </div>
+</article>
+
+
+
+
+  <article class="post">
+  <div class="post-content">
+    <header>
+      
+  
+    <h1 class="title"><a href="/2014/08/23/不用翻墙登Google/">不用翻墙登Google</a></h1>
+  
+
+      
+      <time datetime="2014-08-23T10:03:55.000Z">2014-08-23</time>
+      
+    </header>
+    <div class="entry">
+      
+        <p>自google被墙，寻找各种翻墙方法，最后还是通过别人配好的url直接访问最方便，这里提供两个：</p>
+<ol>
+<li><a href="https://www.glgoo.com/" target="_blank" rel="external">https://www.glgoo.com/</a> (谷歌学术：<a href="http://scholar.glgoo.com/" target="_blank" rel="external">http://scholar.glgoo.com/</a>)</li>
+<li><a href="http://myrevery.com/google" target="_blank" rel="external">http://myrevery.com/google</a></li>
+</ol>
+<h2 id="将其设置为浏览器默认搜索引擎">将其设置为浏览器默认搜索引擎</h2><ul>
+<li><strong>firefox</strong><br>对于火狐只要添加一个插件就行了：<a href="https://addons.mozilla.org/zh-cn/firefox/addon/add-to-search-bar/" target="_blank" rel="external">Add to Search Bar</a>,便可以将所有搜索引擎添加至搜索框中。</li>
+<li><p><strong>chrome</strong><br>对于chrome需要将通过<code>chrome://settings</code>,也就是<code>设置</code>选项，找到<code>管理搜索引擎...</code>分别将上面1、2搜索添加进去，添加方式如下。</p>
+<ul>
+<li><p><a href="https://www.glgoo.com/" target="_blank" rel="external">https://www.glgoo.com/</a> 添加方式为：<code>https://www.glgoo.com/search?q=%s</code></p>
+</li>
+<li><p><a href="http://myrevery.com/google" target="_blank" rel="external">http://myrevery.com/google</a> 添加方式为：</p>
+<figure class="highlight nix"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://music.google.cn/search?<span class="variable">hl=</span>zh-CN&amp;<span class="variable">tbo=</span><span class="number">1</span>&amp;<span class="variable">prmdo=</span><span class="number">1</span>&amp;<span class="variable">sout=</span><span class="number">1</span>&amp;<span class="variable">q=</span>%s&amp;<span class="variable">btnG=</span>Google+搜索&amp;<span class="variable">gbv=</span><span class="number">2</span>&amp;<span class="variable">sclient=</span>psy-ab</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<p>好了，开始尽情的玩耍吧！☺</p>
+
+      
+    </div>
+    
+      
+    
+  </div>
+</article>
+
+
+
+
+  <article class="post">
+  <div class="post-content">
+    <header>
+      
+  
+    <h1 class="title"><a href="/2014/08/02/mapbox-first-use/">MapBox上手教程</a></h1>
+  
+
+      
+      <time datetime="2014-08-02T14:29:24.000Z">2014-08-02</time>
+      
+    </header>
+    <div class="entry">
+      
+        <h1 id="MapBox简介">MapBox简介</h1><p><a href="https://www.mapbox.com/">MapBox</a>是一个可以免费创建并定制个性化地图的网站，一些相关的介绍：</p>
+<ul>
+<li><a href="http://www.pingwest.com/demo/mapbox/">创立3年没要投资人一分钱，没销售人员——个性定制地图网站Mapbox是如何服务900家付费客户，并养活30号员工的</a></li>
+<li><a href="http://www.appinn.com/mapbox/">Mapbox – 自定义你的地图</a>  </li>
+</ul>
+<p>类似的网站还有</p>
+<ul>
+<li><a href="https://www.arcgis.com/home/">ArcGIS Online</a></li>
+<li><a href="http://cartodb.com/">CartoDB</a></li>
+<li><a href="http://www.dituhui.com/">地图汇</a></li>
+<li><a href="http://www.google.com/fusiontables">Google Fusion Tables</a>
+      
+    </div>
+    
+      
+      <footer>
+        <div class="alignleft">
+          <a href="/2014/08/02/mapbox-first-use/#more" class="more-link">阅读全文 &gt;</a>
+        </div>
+        <div class="clearfix"></div>
+      </footer>
+      
+    
+  </div>
+</article>
+
+
+
+
+  <article class="post">
+  <div class="post-content">
+    <header>
+      
+  
+    <h1 class="title"><a href="/2014/04/23/export-map-using-arcpy-example-2/">arcpy批量出图-Example2</a></h1>
+  
+
+      
+      <time datetime="2014-04-23T14:40:07.000Z">2014-04-23</time>
+      
+    </header>
+    <div class="entry">
+      
+        <p>继<a href="http://soarleaf.github.io/2014/04/02/export-map-using-arcpy-example-1">arcpy批量出图-Example1</a><br>后，又看了不少arcpy方面的文档，而且随着arcgis10.2.2的发布，arcpy的功能进一步加强，相信arcpy会却来越多的成为公司生产过程中的利器。Example1是实验室里自己出图用，这次出图的程序是应一个公司的需求进行编码的。</p>
+<h2 id="需求说明">需求说明</h2><p>对于一个打开的MXD文档，需要将其中可见的图层分别出图，对于每个可见的layer分为以下两种情况：<br>
+      
+    </div>
+    
+      
+      <footer>
+        <div class="alignleft">
+          <a href="/2014/04/23/export-map-using-arcpy-example-2/#more" class="more-link">阅读全文 &gt;</a>
+        </div>
+        <div class="clearfix"></div>
+      </footer>
+      
+    
+  </div>
+</article>
+
+
+
+
+  <article class="post">
+  <div class="post-content">
+    <header>
+      
+  
+    <h1 class="title"><a href="/2014/04/02/export-map-using-arcpy-example-1/">arcpy批量出图-Example1</a></h1>
+  
+
+      
+      <time datetime="2014-04-02T14:05:10.000Z">2014-04-02</time>
+      
+    </header>
+    <div class="entry">
+      
+        <p>最近师兄要利用ArcGIS进行出图，需要出的图很多，如果手工去出图的话很是麻烦，所以就Google了一下批量出图，发现了arcpy这一批量出图神器。进而发现python这个神奇的蟒蛇。</p>
+<h2 id="问题描述">问题描述</h2><p>对于给定的制图模板（如叶绿素a，模板图中只有一个<code>dataFrame</code>，而且这唯一的<code>dataframe</code>下只有两个<code>layer</code>，第一个是叶绿素a的tif图像，第二个是底图），由于要出不同时间的叶绿素a的反演结果图，因此要更换不同时间的叶绿素a的tif图像，并另存一个mxd文档，导出相应的jpg图片。<br>
+      
+    </div>
+    
+      
+      <footer>
+        <div class="alignleft">
+          <a href="/2014/04/02/export-map-using-arcpy-example-1/#more" class="more-link">阅读全文 &gt;</a>
+        </div>
+        <div class="clearfix"></div>
+      </footer>
+      
+    
+  </div>
+</article>
+
+
+
+
+  <article class="post">
+  <div class="post-content">
+    <header>
+      
+  
+    <h1 class="title"><a href="/2014/03/15/how-to-deceive-gps/">如何欺骗一个GPS</a></h1>
+  
+
+      
+      <time datetime="2014-03-15T04:04:27.000Z">2014-03-15</time>
+      
+    </header>
+    <div class="entry">
+      
+        <p>我们正面临一场地理定位革命。现代人早已不保养灯塔，也生疏了雷达系统，越来越依赖GPS。在不久将来，精确到毫米的GPS能帮我们看紧钱包、钥匙、孩子，但也将时刻暴露我们的私人空间……那么，该如何对付科技中的这个阴暗面？Todd Humphreys教大家如何留一手，“骗”过一个GPS。<br>
+      
+    </div>
+    
+      
+      <footer>
+        <div class="alignleft">
+          <a href="/2014/03/15/how-to-deceive-gps/#more" class="more-link">阅读全文 &gt;</a>
+        </div>
+        <div class="clearfix"></div>
+      </footer>
+      
+    
+  </div>
+</article>
+
+
+
+
+  <article class="post">
+  <div class="post-content">
+    <header>
+      
+  
+    <h1 class="title"><a href="/2014/03/05/my-sublime-text-configure/">sublime text 3 配置</a></h1>
+  
+
+      
+      <time datetime="2014-03-05T14:06:56.000Z">2014-03-05</time>
+      
+    </header>
+    <div class="entry">
+      
+        <p>每次重装系统时，都会重新配置一下sublime，很是麻烦记录，在此记录下自己的sublime的配置，方便以后查阅，大部分的插件可以到<a href="https://sublime.wbond.net/">Package Control</a>去下载。</p>
+<h1 id="一、通用插件">一、通用插件</h1><h2 id="1-Package_Control">1.Package Control</h2><p><a href="https://sublime.wbond.net/installation">Package Control</a>这个自不必说，后面的插件几乎都是利用这个安装的，安装方法：Ctrl+` 打开控制台或者在菜单<code>View</code>→<code>Show Console</code>，在Console中输入一下代码：<br>
+      
+    </div>
+    
+      
+      <footer>
+        <div class="alignleft">
+          <a href="/2014/03/05/my-sublime-text-configure/#more" class="more-link">阅读全文 &gt;</a>
+        </div>
+        <div class="clearfix"></div>
+      </footer>
+      
+    
+  </div>
+</article>
+
+
+
+
+  <article class="post">
+  <div class="post-content">
+    <header>
+      
+  
+    <h1 class="title"><a href="/2014/03/02/geospatial-revolution/">Geospatial Revolution</a></h1>
+  
+
+      
+      <time datetime="2014-03-02T15:06:56.000Z">2014-03-02</time>
+      
+    </header>
+    <div class="entry">
+      
+        <p>Pennsylvania State University制作的『Geospatial Revolution』系列视频制作精美、内容丰富，通过一个个真实案例，介绍了地理空间技术在各个领域的广泛应用，包括灾难、军事、政府、商业和科研等等，还有多位业内大佬倾情出演～<br>
+      
+    </div>
+    
+      
+      <footer>
+        <div class="alignleft">
+          <a href="/2014/03/02/geospatial-revolution/#more" class="more-link">阅读全文 &gt;</a>
+        </div>
+        <div class="clearfix"></div>
+      </footer>
+      
+    
+  </div>
+</article>
+
+
+
+
+  <article class="post">
+  <div class="post-content">
+    <header>
+      
+  
+    <h1 class="title"><a href="/2014/03/02/landsat-40-years/">Landsat 40 years</a></h1>
+  
+
+      
+      <time datetime="2014-03-02T14:40:07.000Z">2014-03-02</time>
+      
+    </header>
+    <div class="entry">
+      
+        <p>Landsat 40 years: The  longest continuous global record of the Earth’s surface<br>
+      
+    </div>
+    
+      
+      <footer>
+        <div class="alignleft">
+          <a href="/2014/03/02/landsat-40-years/#more" class="more-link">阅读全文 &gt;</a>
+        </div>
+        <div class="clearfix"></div>
+      </footer>
+      
+    
+  </div>
+</article>
+
+
+
+
+  <article class="post">
+  <div class="post-content">
+    <header>
+      
+  
+    <h1 class="title"><a href="/2014/03/01/idl-create-filepath/">IDL创建目录</a></h1>
+  
+
+      
+      <time datetime="2014-03-01T07:48:33.000Z">2014-03-01</time>
+      
+    </header>
+    <div class="entry">
+      
+        <p>最近帮同学利用IDL批量生成目录，研究一番，发现IDL批量处理果然名不虚传。</p>
+<blockquote>
+<p><strong>要求：</strong> 给每个用户创建一个文件夹并将一个doc文件复制到每个每个文件夹中，要求doc文件名与文件夹的名字相同。<br>
+      
+    </div>
+    
+      
+      <footer>
+        <div class="alignleft">
+          <a href="/2014/03/01/idl-create-filepath/#more" class="more-link">阅读全文 &gt;</a>
+        </div>
+        <div class="clearfix"></div>
+      </footer>
+      
+    
+  </div>
+</article>
+
+
+
+
+
+<div class="pagination">
+  <table width='100%'>
+    <tbody>
+    <tr>
+      <td width='120' align='left'>
+        
+      </td>
+      <td width='auto' align='center'>
+          <a href="/archives/">文章归档</a>
+      </td>
+      <td width='120' align='right'>
+        
+        <div class="alignright">
+          <a href="/page/2/" class="alignright next">Next ›</a>
+        </div>
+        
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div></div></div>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer"><div class="inner"><div class="alignleft">
+  <p>
+  
+    &copy; 2015 sshuair
+  
+  </p>
+  <p>
+    Powered by <a href="http://hexo.io/" >Hexo</a> 
+    and Theme by <a href="http://jiabin.tk" >Byron</a> based on <a href="https://github.com/willerce/hexo-theme-noderce" >Noderce</a>
+  </p>
+
+</div>
+<div class="clearfix"></div></div></footer>
+  <script type="text/javascript">
+
+</script>
+
+</body>
+</html>

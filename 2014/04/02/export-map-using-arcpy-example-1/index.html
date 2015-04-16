@@ -1,0 +1,167 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>sshuair › arcpy批量出图-Example1</title>
+  <meta name="author" content="sshuair">
+  
+  <meta name="description" content="最近师兄要利用ArcGIS进行出图，需要出的图很多，如果手工去出图的话很是麻烦，所以就Google了一下批量出图，发现了arcpy这一批量出图神器。进而发现python这个神奇的蟒蛇。
+问题描述对于给定的制图模板（如叶绿素a，模板图中只有一个dataFrame，而且这唯一的dataframe下只有两个layer，第一个是叶绿素a的tif图像，第二个是底图），由于要出不同时间的叶绿素a的反演结果图，因此要更换不同时间的叶绿素a的tif图像，并另存一个mxd文档，导出相应的jpg图片。">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="arcpy批量出图-Example1"/>
+  <meta property="og:site_name" content="sshuair"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/favicon.png" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="sshuair" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-58993338-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+
+
+<body>
+  <header id="header"><div class="meta inner">
+  <h1><a href="/">sshuair</a></h1>
+  <h2 id="header-h2">书写是为了更好的思考</h2>
+  <nav id="main-nav">
+    <ul>
+      
+      <li><a href="/">首页</a></li>
+      
+      <li><a href="/archives">文章归档</a></li>
+      
+      <li><a href="/about">关于</a></li>
+      
+    </ul>
+    <div class="clearfix"></div>
+  </nav>
+</div>
+<div class="clearfix"></div>
+</header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  <div class="post-content">
+    <header>
+      
+  
+    <h1 class="title">arcpy批量出图-Example1</h1>
+  
+
+      
+      <time datetime="2014-04-02T14:05:10.000Z">2014-04-02</time>
+      
+    </header>
+    <div class="entry">
+      
+        <p>最近师兄要利用ArcGIS进行出图，需要出的图很多，如果手工去出图的话很是麻烦，所以就Google了一下批量出图，发现了arcpy这一批量出图神器。进而发现python这个神奇的蟒蛇。</p>
+<h2 id="问题描述">问题描述</h2><p>对于给定的制图模板（如叶绿素a，模板图中只有一个<code>dataFrame</code>，而且这唯一的<code>dataframe</code>下只有两个<code>layer</code>，第一个是叶绿素a的tif图像，第二个是底图），由于要出不同时间的叶绿素a的反演结果图，因此要更换不同时间的叶绿素a的tif图像，并另存一个mxd文档，导出相应的jpg图片。<br><a id="more"></a><br><img src="/img/arcpy-export-map/1FullMode.png" alt=""></p>
+<h2 id="问题分析">问题分析</h2><ul>
+<li>加载进来的叶绿素a tif影像，<code>Symbology</code>默认是<code>Stretched</code>中的黑白影像，而模板中tif影像的<code>Symbology</code>为<code>Classified</code>，这里需要利用Arcpy将模板中的<code>Symbology</code>应用到新加载的tif影像中，这里利用<code>arcpy.mapping.UpdateLayer</code>。</li>
+<li>由于每幅tif图像的时间、传感器类型不同，需要修改左下脚的说明文字，这里用<code>arcpy.mapping.ListLayoutElements</code> 中的 <code>TEXT_ELEMENT</code> 进行修改。</li>
+</ul>
+<p><img src="/img/arcpy-export-map/2Information.png" alt=""></p>
+<h2 id="过程说明">过程说明</h2><ol>
+<li>复制MXD文档：根据当前目录下tif文件个数，复制模板文件，保证每个tif文件对应一个MXD文档，并且两者的文件名相同</li>
+<li>修改MXD文档：打开每个MXD文档，替换里面的tif文件、即相应的左下角的描述信息</li>
+<li>导出jpg图片：利用<code>arcpy.mapping.ExportToJPEG</code>进行导出</li>
+</ol>
+<h2 id="条件要求">条件要求</h2><ul>
+<li>模板文件：左下角的说明文件的「Properties」-&gt;「Element Name」设置为<code>infomation</code><br><img src="/img/arcpy-export-map/3Information.png" alt=""></li>
+<li>目录文件：模板文件应与tif文件在同一目录下，并且，该目录下除了模板文件，不能有其他「mxd」文件和不需要出图的「tif」文件，底图tif文件不能放在该目录下<br><img src="/img/arcpy-export-map/4Folder.png" alt=""></li>
+<li>文件名称：待出图的tif文件命名规则为<code>20130102_WFV1_COD.tif</code>，包括「时间」、「传感器类型」、「反演参数名」以下划线分割</li>
+</ul>
+<h2 id="使用说明">使用说明</h2><ul>
+<li>方法一：在ArcMap中新建一个<code>ToolBox</code>(ExportMap.tbx)，右键<code>add</code>-&gt;<code>Script</code>将下面的代码粘贴到一个<code>*.py</code>文件中，每次运行时需要修改模板文件的路径<code>templateMXDfp = r&#39;C:\Users\wangs\Desktop\TestArcPy\inversion\20130101_WFV1_COD.mxd&#39;</code></li>
+<li>方法二：直接打开ArcMap中python控制台，将下面代码粘贴到命令行中，回车运行即可。<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"><span class="keyword">import</span> os.path</span><br><span class="line"><span class="keyword">import</span> arcpy</span><br><span class="line"><span class="keyword">import</span> shutil</span><br><span class="line"></span><br><span class="line"><span class="comment">#说明：对于给定的模板以及tif文件，批量出图</span></span><br><span class="line"><span class="comment">#要求：tif文件名格式为  20130101_WFV1_COD.tif  共分个部分：时间、传感器（四个字符）、反演参数</span></span><br><span class="line"><span class="comment">#使用：每次需要修改 templateMXDfp 的路径， 及模板的路径</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#解析tif文件名</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">analysisTifName</span><span class="params">(filename)</span>:</span></span><br><span class="line">    tempList = filename.split(<span class="string">'_'</span>)</span><br><span class="line">    time =  <span class="string">"数据获取时间："</span> + tempList[<span class="number">0</span>][<span class="number">0</span>:<span class="number">4</span>]+<span class="string">"年"</span>+ tempList[<span class="number">0</span>][<span class="number">4</span>:<span class="number">6</span>] + <span class="string">"月"</span> + tempList[<span class="number">0</span>][<span class="number">6</span>:<span class="number">8</span>]+<span class="string">"日"</span></span><br><span class="line">    dataSource =  <span class="string">"数据源："</span> + <span class="string">"GF-1 "</span> + tempList[<span class="number">1</span>]</span><br><span class="line">    textElementInfo = dataSource+<span class="string">"\n"</span>+time+<span class="string">"\n"</span>+<span class="string">"制图单位：环保部卫星环境应用中心"</span></span><br><span class="line">    <span class="keyword">return</span> textElementInfo</span><br><span class="line"></span><br><span class="line"><span class="comment">#模板文件路径</span></span><br><span class="line">templateMXDfp = <span class="string">r'C:\Users\wangs\Desktop\TestArcPy\inversion\20130101_WFV1_COD.mxd'</span></span><br><span class="line"></span><br><span class="line">startdir = os.path.dirname(templateMXDfp)  </span><br><span class="line">DictMxdTif = &#123;&#125;  <span class="comment">#待生成的mxd文档路径包括mxd、原始tif路径、导出的jpg路径、information文字</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#获取指定路径（startdir）下的所有*.tif文件路径， 利用tif文件的文件名生成相应mxd的文件名</span></span><br><span class="line"><span class="keyword">for</span> dirpath, dirnames, filenames <span class="keyword">in</span> os.walk(startdir):</span><br><span class="line">    <span class="keyword">for</span> filename <span class="keyword">in</span> filenames:</span><br><span class="line">        <span class="keyword">if</span> os.path.splitext(filename)[<span class="number">1</span>] == <span class="string">'.tif'</span>:</span><br><span class="line">            filepathTIF = os.path.join(dirpath, filename)   <span class="comment">#tif文件路径</span></span><br><span class="line">            dstMXDfp = dirpath + <span class="string">"\\"</span> + filename[:-<span class="number">4</span>]+<span class="string">".mxd"</span>  <span class="comment">#待copy的目标mxd文件路径</span></span><br><span class="line">            filepathJPG = dirpath + <span class="string">"\\"</span> + filename[:-<span class="number">4</span>]+<span class="string">".jpg "</span>  <span class="comment">#待导出的jpg文件路径</span></span><br><span class="line">            textElementInfo = analysisTifName(filename)  <span class="comment">#获取图的infomation</span></span><br><span class="line">            <span class="keyword">if</span> os.path.isfile(dstMXDfp): </span><br><span class="line">                <span class="keyword">pass</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                shutil.copy(templateMXDfp,dstMXDfp)  <span class="comment">#复制模板文件至目标文件</span></span><br><span class="line">            <span class="comment"># DictMxdTif[filename[:-4]]=&#123;'mxd':dstMXDfp,'tif':filepathTIF&#125;</span></span><br><span class="line">            DictMxdTif[filename[:-<span class="number">4</span>]]=[dstMXDfp, filepathTIF, filepathJPG, textElementInfo]</span><br><span class="line"></span><br><span class="line"><span class="comment">#出图</span></span><br><span class="line"><span class="comment">#对每个mxd，及相应的tif文件进行遍历、并保存、生成jpg</span></span><br><span class="line"><span class="keyword">for</span> (k,v) <span class="keyword">in</span>  DictMxdTif.items():</span><br><span class="line">    <span class="keyword">if</span> v[<span class="number">0</span>] == templateMXDfp:</span><br><span class="line">        <span class="keyword">pass</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        mxd = arcpy.mapping.MapDocument(v[<span class="number">0</span>])  <span class="comment">#打开mxd文档</span></span><br><span class="line">        df = arcpy.mapping.ListDataFrames(mxd, <span class="string">"Layers"</span>)[<span class="number">0</span>] <span class="comment">#获取mxd文档中的dataFrame</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">#添加图层layer</span></span><br><span class="line">        lyrReadFile = arcpy.mapping.Layer(v[<span class="number">1</span>])  <span class="comment">#读取文件为layer</span></span><br><span class="line">        arcpy.mapping.AddLayer(df, lyrReadFile)  <span class="comment">#添加图层至dataFrame</span></span><br><span class="line">        lyr = arcpy.mapping.ListLayers(mxd,<span class="string">""</span>,df) <span class="comment">#获取df中的layers</span></span><br><span class="line">    </span><br><span class="line">        lyrUpdate = lyr[<span class="number">0</span>] <span class="comment">#获取第0层的Layer</span></span><br><span class="line">        lyrSource = lyr[<span class="number">1</span>]</span><br><span class="line">        </span><br><span class="line">        arcpy.mapping.UpdateLayer(df,lyrUpdate,lyrSource,<span class="keyword">True</span>)  <span class="comment">#用lyrChla的symbology替换掉lyrCOD的symbology   此为核心语句</span></span><br><span class="line">        <span class="comment">#lyrCOD.symbology.reclassify()  #重新自动分类</span></span><br><span class="line">        arcpy.mapping.RemoveLayer(df,lyrSource)  <span class="comment">#从dataFrame中删除指定图层</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># xPosition = 0.4004  #存储information的x、y坐标</span></span><br><span class="line">        <span class="comment"># yPosition = 0.3208</span></span><br><span class="line">        <span class="keyword">for</span> elm <span class="keyword">in</span> arcpy.mapping.ListLayoutElements(mxd, <span class="string">"TEXT_ELEMENT"</span>):</span><br><span class="line">            <span class="keyword">if</span> elm.name == <span class="string">"information"</span>:</span><br><span class="line">                xPosition = elm.elementPositionX  <span class="comment">#存储原始MXD文件 information的x、y坐标</span></span><br><span class="line">                yPosition = elm.elementPositionY</span><br><span class="line">                elm.text = v[<span class="number">3</span>]</span><br><span class="line">                elm.elementPositionX = xPosition</span><br><span class="line">                elm.elementPositionY = yPosition</span><br><span class="line">        arcpy.RefreshActiveView()</span><br><span class="line">        arcpy.mapping.ExportToJPEG(mxd, v[<span class="number">2</span>], resolution = <span class="number">500</span>)</span><br><span class="line">        mxd.save()</span><br><span class="line">        <span class="keyword">del</span> mxd</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="后记">后记</h2><ul>
+<li>arcpy可以利用<code>arcpy.GetParameterAsText</code>直接获取ToolBox的参数，但是用到这个脚本中一直出错，不知什么原因。</li>
+<li>对于<code>ToolBox</code>中文乱码问题，这里要在文件头部添加<code># -*- coding: utf-8 -*-</code>,并且要将文件保存为<code>utf-8 无BOM格式</code> </li>
+</ul>
+
+      
+    </div>
+    
+    <footer>
+      <div class="alignleft">
+      
+  
+  <div class="categories">
+    <a href="/categories/GIS/">GIS</a>
+  </div>
+
+      
+  
+  <div class="tags">
+    <a href="/tags/GIS/">GIS</a>, <a href="/tags/Python/">Python</a>, <a href="/tags/arcpy/">arcpy</a>
+  </div>
+
+      </div>
+      <div class="clearfix"></div>
+    </footer>
+    
+  </div>
+</article>
+
+
+<section id="comment">
+  
+            <!-- Duoshuo Comment BEGIN -->
+            <div class="ds-thread"></div>
+            <script type="text/javascript">
+                var duoshuoQuery = {short_name:"sshuair"};
+                (function() {
+                    var ds = document.createElement('script');
+                    ds.type = 'text/javascript';ds.async = true;
+                    ds.src = 'http://static.duoshuo.com/embed.js';
+                    ds.charset = 'UTF-8';
+                    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
+                })();
+            </script>
+            <!-- Duoshuo Comment END -->
+      
+  
+</section>
+
+</div></div>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer"><div class="inner"><div class="alignleft">
+  <p>
+  
+    &copy; 2015 sshuair
+  
+  </p>
+  <p>
+    Powered by <a href="http://hexo.io/" >Hexo</a> 
+    and Theme by <a href="http://jiabin.tk" >Byron</a> based on <a href="https://github.com/willerce/hexo-theme-noderce" >Noderce</a>
+  </p>
+
+</div>
+<div class="clearfix"></div></div></footer>
+  <script type="text/javascript">
+
+</script>
+
+</body>
+</html>

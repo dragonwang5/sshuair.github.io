@@ -1,0 +1,147 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>sshuair › 利用MathJax在hexo中生成数学公式</title>
+  <meta name="author" content="sshuair">
+  
+  <meta name="description" content="在Hexo中调用第三方渲染工具MathJax生成数学公式">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="利用MathJax在hexo中生成数学公式"/>
+  <meta property="og:site_name" content="sshuair"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/favicon.png" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="sshuair" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-58993338-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+
+
+<body>
+  <header id="header"><div class="meta inner">
+  <h1><a href="/">sshuair</a></h1>
+  <h2 id="header-h2">书写是为了更好的思考</h2>
+  <nav id="main-nav">
+    <ul>
+      
+      <li><a href="/">首页</a></li>
+      
+      <li><a href="/archives">文章归档</a></li>
+      
+      <li><a href="/about">关于</a></li>
+      
+    </ul>
+    <div class="clearfix"></div>
+  </nav>
+</div>
+<div class="clearfix"></div>
+</header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  <div class="post-content">
+    <header>
+      
+  
+    <h1 class="title">利用MathJax在hexo中生成数学公式</h1>
+  
+
+      
+      <time datetime="2014-01-03T13:58:04.000Z">2014-01-03</time>
+      
+    </header>
+    <div class="entry">
+      
+        <p>当我们需要在文章中插入数学公式时，通常是在<code>mathtype</code>中写好然后截图，再将图片插入到文章中，但是这样做很是麻烦，最近找到一个方法可以不用这么麻烦，直接调用第三方工具在网页中自动将特定的公式转换为数学公式</p>
+<p>像这样：$E=mc^2$, $y = \sum_{n=1}^{10} n^2$<br><a id="more"></a><br>首先需要在<code>themes/***/layout/_partial/after_footer.ejs</code>中添加下面的代码：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;script type=<span class="string">"text/x-mathjax-config"</span>&gt;</span><br><span class="line">	MathJax.Hub.Config(&#123;</span><br><span class="line">		extensions: [<span class="string">"tex2jax.js"</span>,<span class="string">"MathMenu.js"</span>,<span class="string">"MathZoom.js"</span>],</span><br><span class="line">		tex2jax: &#123;inlineMath: [[<span class="string">'$'</span>,<span class="string">'$'</span>]]&#125;,</span><br><span class="line">		TeX: &#123;</span><br><span class="line">			extensions: [<span class="string">"AMSmath.js"</span>,<span class="string">"AMSsymbols.js"</span>,<span class="string">"noErrors.js"</span>,<span class="string">"noUndefined.js"</span>]</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;);</span><br><span class="line"><span class="xml"><span class="tag">&lt;/<span class="title">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">script</span> <span class="attribute">src</span>=<span class="value">"http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"</span> <span class="attribute">type</span>=<span class="value">"text/javascript"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+<p>然后我们就可以在文章中像在$LaTeX$中一样写公式了，<code>MathJax</code>识别需要转换的公式的标志是一对Dollor符：<code>$$</code>，我们需要在编辑<code>markdown</code>文章时加上这一对<code>$$</code>符号，并在这对符号中间添加$LaTeX$公式，文章开头的两个公式就是这样写出来的：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#20687;&#36825;&#26679;&#65306;$E=mc^2$, $y = \sum_&#123;n=1&#125;^&#123;10&#125; n^2$</span><br></pre></td></tr></table></figure>
+<p><strong>鸣谢</strong></p>
+<p>1、在请教了<a href="http://ppwwyyxx.com/" target="_blank" rel="external">Yuxin</a>后才得以知道在<code>after_footer.ejs</code>中加入那段渲染脚本，再次表示感谢！<br>2、<a href="http://www.cnblogs.com/ilogic/archive/2012/08/05/latex.html" target="_blank" rel="external">在博客园利用 MathJax 建支持 LaTeX 的博客</a></p>
+
+      
+    </div>
+    
+    <footer>
+      <div class="alignleft">
+      
+  
+  <div class="categories">
+    <a href="/categories/Hexo/">Hexo</a>
+  </div>
+
+      
+  
+  <div class="tags">
+    <a href="/tags/Hexo/">Hexo</a>, <a href="/tags/Math/">Math</a>
+  </div>
+
+      </div>
+      <div class="clearfix"></div>
+    </footer>
+    
+  </div>
+</article>
+
+
+<section id="comment">
+  
+            <!-- Duoshuo Comment BEGIN -->
+            <div class="ds-thread"></div>
+            <script type="text/javascript">
+                var duoshuoQuery = {short_name:"sshuair"};
+                (function() {
+                    var ds = document.createElement('script');
+                    ds.type = 'text/javascript';ds.async = true;
+                    ds.src = 'http://static.duoshuo.com/embed.js';
+                    ds.charset = 'UTF-8';
+                    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
+                })();
+            </script>
+            <!-- Duoshuo Comment END -->
+      
+  
+</section>
+
+</div></div>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer"><div class="inner"><div class="alignleft">
+  <p>
+  
+    &copy; 2015 sshuair
+  
+  </p>
+  <p>
+    Powered by <a href="http://hexo.io/" >Hexo</a> 
+    and Theme by <a href="http://jiabin.tk" >Byron</a> based on <a href="https://github.com/willerce/hexo-theme-noderce" >Noderce</a>
+  </p>
+
+</div>
+<div class="clearfix"></div></div></footer>
+  <script type="text/javascript">
+
+</script>
+
+</body>
+</html>

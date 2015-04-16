@@ -1,0 +1,188 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>sshuair › MapBox上手教程</title>
+  <meta name="author" content="sshuair">
+  
+  <meta name="description" content="MapBox是一个可以免费创建并定制个性化地图的网站, 本文将简单介绍MapBox创建地图的基本功能以及如何分享你定制的地图">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="MapBox上手教程"/>
+  <meta property="og:site_name" content="sshuair"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/favicon.png" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="sshuair" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-58993338-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+
+
+<body>
+  <header id="header"><div class="meta inner">
+  <h1><a href="/">sshuair</a></h1>
+  <h2 id="header-h2">书写是为了更好的思考</h2>
+  <nav id="main-nav">
+    <ul>
+      
+      <li><a href="/">首页</a></li>
+      
+      <li><a href="/archives">文章归档</a></li>
+      
+      <li><a href="/about">关于</a></li>
+      
+    </ul>
+    <div class="clearfix"></div>
+  </nav>
+</div>
+<div class="clearfix"></div>
+</header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  <div class="post-content">
+    <header>
+      
+  
+    <h1 class="title">MapBox上手教程</h1>
+  
+
+      
+      <time datetime="2014-08-02T14:29:24.000Z">2014-08-02</time>
+      
+    </header>
+    <div class="entry">
+      
+        <h1 id="MapBox简介">MapBox简介</h1><p><a href="https://www.mapbox.com/" target="_blank" rel="external">MapBox</a>是一个可以免费创建并定制个性化地图的网站，一些相关的介绍：</p>
+<ul>
+<li><a href="http://www.pingwest.com/demo/mapbox/" target="_blank" rel="external">创立3年没要投资人一分钱，没销售人员——个性定制地图网站Mapbox是如何服务900家付费客户，并养活30号员工的</a></li>
+<li><a href="http://www.appinn.com/mapbox/" target="_blank" rel="external">Mapbox – 自定义你的地图</a>  </li>
+</ul>
+<p>类似的网站还有</p>
+<ul>
+<li><a href="https://www.arcgis.com/home/" target="_blank" rel="external">ArcGIS Online</a></li>
+<li><a href="http://cartodb.com/" target="_blank" rel="external">CartoDB</a></li>
+<li><a href="http://www.dituhui.com/" target="_blank" rel="external">地图汇</a></li>
+<li><a href="http://www.google.com/fusiontables" target="_blank" rel="external">Google Fusion Tables</a><a id="more"></a>
+<h1 id="创建自己的地图">创建自己的地图</h1>当然，要想创建自己的个性化地图，首先需要申请一个账号。创建完成后，在右上角可以看到<code>Projects</code>和<code>Data</code>两个选项，这里选择<code>Projects</code>进入可以看见自己的Projects列表，点击<code>+ Create project</code>进入设计地图界面。</li>
+</ul>
+<p><img src="/img/mapbox/project new.png" alt=""></p>
+<p>进入设计界面后，可以看到<code>Style</code>、<code>Data</code>和<code>Project</code>三个主要的设计标签页，另外还有<code>个人主页</code>、<code>搜索</code>和<code>Saved</code>选项，下面主要介绍一下<code>Style</code>、<code>Data</code>和<code>Project</code>三个标签页。</p>
+<h2 id="Style">Style</h2><p><code>Style</code>标签页主要用来设置底图的配色、底图的数据和注记语言，分别通过<code>Color</code>、<code>Baselayer</code>和<code>Language</code>三个选项进行设置。</p>
+<ul>
+<li><strong>Color</strong>：通过调色板设置不同要素（<code>街道</code>、<code>建筑</code>、<code>绿化区</code>、<code>水体</code>、<code>陆地</code>）的颜色。也可以通过<code>MapBox</code>预先定义的配色方案来设置自己地图的配色。</li>
+<li><strong>Baselayer</strong>：设置地图类型，一共三种,<code>普通电子地图</code>、<code>地形图</code>、<code>卫星影像</code>。</li>
+<li><strong>Language</strong>：设置主机语言，四个可选项，<code>本地化</code>、<code>英语</code>、<code>法语</code>、<code>西班牙语</code></li>
+</ul>
+<p><img src="/img/mapbox/style.png" alt=""></p>
+<h2 id="Data">Data</h2><p><code>Data</code>标签页主要用来创建、导入和管理要素，要素类型共三种：点、线、面。</p>
+<ul>
+<li><strong>Browse</strong>：浏览地图以及要素和图层。</li>
+<li><strong>Marker</strong>：制作点状要素。</li>
+<li><strong>Line</strong>：制作线状要素。</li>
+<li><strong>Polygon</strong>：制作面状要素。</li>
+<li><strong>Menu</strong>：features和layers列表，管理要素和图层。</li>
+</ul>
+<p><img src="/img/mapbox/data.png" alt=""></p>
+<h2 id="Project">Project</h2><p><code>Project</code>标签页主要用来设置工程的属性以及分享权限的的控制。</p>
+<ul>
+<li><strong>Info</strong>：获取要素的JSON和KML格式数据；MapID（需要配合<a href="https://www.mapbox.com/mapbox.js/api/v2.0.0/" target="_blank" rel="external">Mapbox JavaScript API</a>使用）；分享链接和嵌入网页的链接。</li>
+<li><strong>Settings</strong>：设置工程的名称和描述。</li>
+<li><strong>Advanced</strong>：功能包括，保存当前地图位置；开关工程的公共API；forcing @2x scale for Mapbox Streets （用于支持视网膜屏幕的手机）。</li>
+</ul>
+<p><img src="/img/mapbox/project.png" alt=""></p>
+<h1 id="共享地图">共享地图</h1><p>创建好地图后保存便可以共享了，共享方式有三种：</p>
+<ul>
+<li><strong>Map ID</strong>：需要配合<a href="https://www.mapbox.com/developers/" target="_blank" rel="external">Mapbox developer tools</a>使用。</li>
+<li><p><strong>Share</strong>：直接生成一个网页链接，通过下面的<a href="https://a.tiles.mapbox.com/v4/wangs2718.j4jfg6ml/page.html?access_token=pk.eyJ1Ijoid2FuZ3MyNzE4IiwiYSI6IkliNFlxVnMifQ.neE8x-q88vUI78m_IU0l4w#11/32.0736/118.8027" target="_blank" rel="external">链接</a>直接访问你制作的地图。</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">https:</span><span class="comment">//a.tiles.mapbox.com/v4/wangs2718.j4jfg6ml/page.html?access_token=pk.eyJ1Ijoid2FuZ3MyNzE4IiwiYSI6IkliNFlxVnMifQ.neE8x-q88vUI78m_IU0l4w#11/32.0736/118.8027</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>Embed</strong>：嵌入到自己的html网页中，比如下面这个。</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;<span class="tag">iframe</span> <span class="attribute">width</span>=<span class="string">'100%'</span> <span class="attribute">height</span>=<span class="string">'500px'</span> frameBorder=<span class="string">'0'</span> </span><br><span class="line">    src=<span class="string">'https://a.tiles.mapbox.com/v4/wangs2718.j4jfg6ml/attribution,zoompan,zoomwheel,geocoder,share.html?access_token=pk.eyJ1Ijoid2FuZ3MyNzE4IiwiYSI6IkliNFlxVnMifQ.neE8x-q88vUI78m_IU0l4w'</span>&gt;</span><br><span class="line">&lt;/iframe&gt;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<iframe width="100%" height="500px" frameborder="0" src="https://a.tiles.mapbox.com/v4/wangs2718.j4jfg6ml/attribution,zoompan,zoomwheel,geocoder,share.html?access_token=pk.eyJ1Ijoid2FuZ3MyNzE4IiwiYSI6IkliNFlxVnMifQ.neE8x-q88vUI78m_IU0l4w"></iframe>
+      
+    </div>
+    
+    <footer>
+      <div class="alignleft">
+      
+  
+  <div class="categories">
+    <a href="/categories/GIS/">GIS</a>
+  </div>
+
+      
+  
+  <div class="tags">
+    <a href="/tags/GIS/">GIS</a>, <a href="/tags/MapBox/">MapBox</a>
+  </div>
+
+      </div>
+      <div class="clearfix"></div>
+    </footer>
+    
+  </div>
+</article>
+
+
+<section id="comment">
+  
+            <!-- Duoshuo Comment BEGIN -->
+            <div class="ds-thread"></div>
+            <script type="text/javascript">
+                var duoshuoQuery = {short_name:"sshuair"};
+                (function() {
+                    var ds = document.createElement('script');
+                    ds.type = 'text/javascript';ds.async = true;
+                    ds.src = 'http://static.duoshuo.com/embed.js';
+                    ds.charset = 'UTF-8';
+                    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
+                })();
+            </script>
+            <!-- Duoshuo Comment END -->
+      
+  
+</section>
+
+</div></div>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer"><div class="inner"><div class="alignleft">
+  <p>
+  
+    &copy; 2015 sshuair
+  
+  </p>
+  <p>
+    Powered by <a href="http://hexo.io/" >Hexo</a> 
+    and Theme by <a href="http://jiabin.tk" >Byron</a> based on <a href="https://github.com/willerce/hexo-theme-noderce" >Noderce</a>
+  </p>
+
+</div>
+<div class="clearfix"></div></div></footer>
+  <script type="text/javascript">
+
+</script>
+
+</body>
+</html>

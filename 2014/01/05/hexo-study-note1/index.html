@@ -1,0 +1,154 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>sshuair › hexo学习笔记</title>
+  <meta name="author" content="sshuair">
+  
+  <meta name="description" content="themes存放主题文件，默认主题为light
+languages: 语言配置文件
+layout: 布局文件，该文件加内容有待研究，
+_partial 为网页每个部分的布局，如header博客的头部进行配置；comment用于设置评论配置；google_analytics用于配置google分析工具；after_footer貌似用于每篇文章打开的配置，这里可以将mathjax加载到其中。">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="hexo学习笔记"/>
+  <meta property="og:site_name" content="sshuair"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/favicon.png" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="sshuair" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-58993338-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+
+
+<body>
+  <header id="header"><div class="meta inner">
+  <h1><a href="/">sshuair</a></h1>
+  <h2 id="header-h2">书写是为了更好的思考</h2>
+  <nav id="main-nav">
+    <ul>
+      
+      <li><a href="/">首页</a></li>
+      
+      <li><a href="/archives">文章归档</a></li>
+      
+      <li><a href="/about">关于</a></li>
+      
+    </ul>
+    <div class="clearfix"></div>
+  </nav>
+</div>
+<div class="clearfix"></div>
+</header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  <div class="post-content">
+    <header>
+      
+  
+    <h1 class="title">hexo学习笔记</h1>
+  
+
+      
+      <time datetime="2014-01-05T12:53:31.000Z">2014-01-05</time>
+      
+    </header>
+    <div class="entry">
+      
+        <h1 id="themes">themes</h1><p>存放主题文件，默认主题为<code>light</code></p>
+<p><strong>languages:</strong> 语言配置文件</p>
+<p><strong>layout:</strong> 布局文件，该文件加内容有待研究，</p>
+<p><em><code>_partial</code></em> 为网页每个部分的布局，如<code>header</code>博客的头部进行配置；<code>comment</code>用于设置评论配置；<code>google_analytics</code>用于配置google分析工具；<code>after_footer</code>貌似用于每篇文章打开的配置，这里可以将mathjax加载到其中。<br><a id="more"></a><br><em><code>_widget</code></em> 为页面添加模块，里面包括<code>category</code>（文章分类）、 <code>recent_posts</code>（最近文章） <code>search</code>（搜索） <code>tag（标签）</code> <code>tagcloud</code>（标签云） ，而加载这些widget需要在theme的<code>_config</code>中进行配置。</p>
+<p>其他文件还不大明白</p>
+<p><strong>source:</strong> 存放资源，有待研究。不过可以吧一些图片文件放在该文件夹下，如博客的大小图标，<br><!--more--></p>
+<h1 id="source">source</h1><p><strong>_dtafts:</strong> 保存草稿位置，生成命令：<code>hexo new draft &quot;draftName&quot;</code><br>                            发布草稿命令：<code>hexo publish &quot;draftName&quot;</code></p>
+<p><strong>_posts:</strong> 保存发布的文章，生成命令：<code>hexo new post &quot;postName&quot;</code> 或者<code>hexo new &quot;postNam&quot;</code></p>
+<p><strong>about:</strong> 用户生成的关于page ，生成命令：<code>hexo new page &quot;newPageName&quot;</code><br>                在生成about目录后about中会自动生成一个文件<code>index.md</code><br>                为了使生成的page可以显示、使用，需要在主题的配置文件即<code>themes\light\_config.yml</code>中在<code>menu</code>中添加<code>About: /about</code>前面的<code>About</code>为显示名称，后面的存储名称，</p>
+<h1 id="script">script</h1><p>不清楚有啥用，从名字上来看应该是存放脚本文件的</p>
+<h1 id="scaffolds">scaffolds</h1><p>创建<code>draft</code> <code>post</code> <code>page</code> <code>photo</code>时用于生成头文件</p>
+
+      
+    </div>
+    
+    <footer>
+      <div class="alignleft">
+      
+  
+  <div class="categories">
+    <a href="/categories/Hexo/">Hexo</a>
+  </div>
+
+      
+  
+  <div class="tags">
+    <a href="/tags/Hexo/">Hexo</a>
+  </div>
+
+      </div>
+      <div class="clearfix"></div>
+    </footer>
+    
+  </div>
+</article>
+
+
+<section id="comment">
+  
+            <!-- Duoshuo Comment BEGIN -->
+            <div class="ds-thread"></div>
+            <script type="text/javascript">
+                var duoshuoQuery = {short_name:"sshuair"};
+                (function() {
+                    var ds = document.createElement('script');
+                    ds.type = 'text/javascript';ds.async = true;
+                    ds.src = 'http://static.duoshuo.com/embed.js';
+                    ds.charset = 'UTF-8';
+                    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
+                })();
+            </script>
+            <!-- Duoshuo Comment END -->
+      
+  
+</section>
+
+</div></div>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer"><div class="inner"><div class="alignleft">
+  <p>
+  
+    &copy; 2015 sshuair
+  
+  </p>
+  <p>
+    Powered by <a href="http://hexo.io/" >Hexo</a> 
+    and Theme by <a href="http://jiabin.tk" >Byron</a> based on <a href="https://github.com/willerce/hexo-theme-noderce" >Noderce</a>
+  </p>
+
+</div>
+<div class="clearfix"></div></div></footer>
+  <script type="text/javascript">
+
+</script>
+
+</body>
+</html>

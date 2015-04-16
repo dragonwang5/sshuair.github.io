@@ -1,0 +1,164 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>sshuair › sublime text 3 配置</title>
+  <meta name="author" content="sshuair">
+  
+  <meta name="description" content="每次重装系统时，都会重新配置一下sublime，很是麻烦记录，在此记录下自己的sublime的配置，方便以后查阅，大部分的插件可以到Package Control去下载。
+一、通用插件1.Package ControlPackage Control这个自不必说，后面的插件几乎都是利用这个安装的，安装方法：Ctrl+` 打开控制台或者在菜单View→Show Console，在Console中输入一下代码：">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="sublime text 3 配置"/>
+  <meta property="og:site_name" content="sshuair"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/favicon.png" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="sshuair" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-58993338-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+
+
+<body>
+  <header id="header"><div class="meta inner">
+  <h1><a href="/">sshuair</a></h1>
+  <h2 id="header-h2">书写是为了更好的思考</h2>
+  <nav id="main-nav">
+    <ul>
+      
+      <li><a href="/">首页</a></li>
+      
+      <li><a href="/archives">文章归档</a></li>
+      
+      <li><a href="/about">关于</a></li>
+      
+    </ul>
+    <div class="clearfix"></div>
+  </nav>
+</div>
+<div class="clearfix"></div>
+</header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  <div class="post-content">
+    <header>
+      
+  
+    <h1 class="title">sublime text 3 配置</h1>
+  
+
+      
+      <time datetime="2014-03-05T14:06:56.000Z">2014-03-05</time>
+      
+    </header>
+    <div class="entry">
+      
+        <p>每次重装系统时，都会重新配置一下sublime，很是麻烦记录，在此记录下自己的sublime的配置，方便以后查阅，大部分的插件可以到<a href="https://sublime.wbond.net/" target="_blank" rel="external">Package Control</a>去下载。</p>
+<h1 id="一、通用插件">一、通用插件</h1><h2 id="1-Package_Control">1.Package Control</h2><p><a href="https://sublime.wbond.net/installation" target="_blank" rel="external">Package Control</a>这个自不必说，后面的插件几乎都是利用这个安装的，安装方法：Ctrl+` 打开控制台或者在菜单<code>View</code>→<code>Show Console</code>，在Console中输入一下代码：<br><a id="more"></a><br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> urllib.request,os,hashlib; h = <span class="string">'7183a2d3e96f11eeadd761d777e62404'</span> + <span class="string">'e330c659d4bb41d3bdf022e94cab3cd0'</span>; pf = <span class="string">'Package Control.sublime-package'</span>; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( <span class="string">'http://packagecontrol.io/'</span> + pf.replace(<span class="string">' '</span>, <span class="string">'%20'</span>)).read(); dh = hashlib.sha256(by).hexdigest(); print(<span class="string">'Error validating download (got %s instead of %s), please try manual install'</span> % (dh, h)) <span class="keyword">if</span> dh != h <span class="keyword">else</span> open(os.path.join( ipp, pf), <span class="string">'wb'</span> ).write(by)</span><br></pre></td></tr></table></figure></p>
+<p>重启sublime，OK！  后面所有的插件都是利用这个插件进行安装。</p>
+<h2 id="2-Theme_-_Soda">2.Theme - Soda</h2><p><a href="https://sublime.wbond.net/packages/Theme%20-%20Soda" target="_blank" rel="external">Theme - Soda</a>是一款十分漂亮的sublime主题。按<code>Ctrl+Shift+P</code>呼出控制栏，输入<code>Package Control</code>可以发现<code>Install Package</code>选项，选中该项，等待对话框出现输入<code>Theme - soda</code>回车，等待安装完成。</p>
+<blockquote>
+<p>使用：<code>Preferences -&gt; Settings - User</code>添加如下代码：<code>&quot;theme&quot;: &quot;Soda Dark 3.sublime-theme&quot;</code></p>
+</blockquote>
+<h2 id="3-Monokai_Extended">3.Monokai Extended</h2><p><a href="https://sublime.wbond.net/packages/Monokai%20Extended" target="_blank" rel="external">Monokai Extended</a>增强Monokai Color Scheme，添加Markdown，LESS，Handlebars语法高亮，同时提升了RegEx, HTML, LESS, CSS, JavaScript高亮性能。 </p>
+<blockquote>
+<p>使用：<code>Preferences -&gt; Color Scheme -&gt; User -&gt; Monokai Extended</code></p>
+</blockquote>
+<h2 id="4-ConvertToUTF8">4.ConvertToUTF8</h2><p><a href="https://github.com/seanliang/ConvertToUTF8/blob/master/README.zh_CN.md" target="_blank" rel="external">ConvertToUTF8</a>支持中文编码</p>
+<h2 id="5-IMESupport">5.IMESupport</h2><p><a href="https://sublime.wbond.net/packages/IMESupport" target="_blank" rel="external">IMESupport</a>使用中文输入法时，可能会出现输入法的备选字不在光标所在位置，而是在sublime的底部或顶部，那么则可以用这个插件使其恢复正常状态，跟随光标。</p>
+<h2 id="6-SideBarEnhancements">6.SideBarEnhancements</h2><p><a href="https://sublime.wbond.net/packages/SideBarEnhancements" target="_blank" rel="external">SideBarEnhancements</a>侧边栏增强工具。</p>
+<h1 id="二、Markdown">二、Markdown</h1><h2 id="1-Markdown_Preview">1.Markdown Preview</h2><p><a href="https://sublime.wbond.net/packages/Markdown%20Preview" target="_blank" rel="external">Markdown Preview</a>可以实现预览功能（在浏览器中）。</p>
+<h2 id="2-Markdown​Editing">2.Markdown​Editing</h2><p><a href="https://sublime.wbond.net/packages/MarkdownEditing" target="_blank" rel="external">Markdown​Editing</a>为mardown编辑提供一个更好的编辑视图，支持语法高亮，支持3种格式的markdown：Standard Markdown, GitHub flavored Markdown, MultiMarkdown。并提供了三种主题：灰色、黑色和黄色。不过这个安装上后，sublime会经常出现未响应的情况。</p>
+<h1 id="三、前端">三、前端</h1><h2 id="1-Emmet">1.Emmet</h2><p><a href="http://emmet.io/" target="_blank" rel="external">Emmet</a>不解释，前端利器。</p>
+<h2 id="2-Pretty_JSON">2.Pretty JSON</h2><h2 id="3-HTML-CSS-JS_Prettify">3.HTML-CSS-JS Prettify</h2><p>需要<a href="http://nodejs.org/" target="_blank" rel="external">NodeJS</a>支持，在<code>Preferences -&gt; Package Settings -&gt; HTML/CSS/JS Prettify -&gt; Set node path</code> 设置NodeJS路径</p>
+<h2 id="4-Live​Style">4.Live​Style</h2><h2 id="5-Live​Reload">5.Live​Reload</h2><h2 id="6-Sublime​Code​Intel">6.Sublime​Code​Intel</h2><h2 id="7-BracketHighlighter">7.BracketHighlighter</h2><h2 id="8-NodeJS编译js文件">8.NodeJS编译js文件</h2><p>利用NOdeJS可以在sublime中编译js文件，非常方便。选择<code>Tools -&gt; Build System -&gt; New Build System...</code>，在打开的新文件中输入以下代码：<br><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">"<span class="attribute">cmd</span>": <span class="value">[<span class="string">"node"</span>, <span class="string">"$file"</span>]</span>,</span><br><span class="line">"<span class="attribute">selector</span>": <span class="value"><span class="string">"source.js"</span></span><br><span class="line"></span>&#125;</span><br></pre></td></tr></table></figure></p>
+<p>保存文件在<code>packages -&gt; user</code>中，命名为<code>NodeJS.sublime-build</code>，这样就可以按<code>Ctrl + B</code>编译js文件，别忘了要用<code>console.log()</code>函数，<code>alert</code>是没用的。</p>
+<h1 id="四、其他">四、其他</h1><h2 id="1-浏览器快捷键">1.浏览器快捷键</h2><p>绑定浏览器快捷启动快捷键，在这之前需要先安装<strong>SideBarEnhancements</strong>打开<code>Preferences -&gt; Key Bindings - User</code>或者<code>Preferences -&gt; Package Settings -&gt; Side Bar -&gt; Key Bindings - User</code>添加以下代码：<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">[</span><br><span class="line">   &#123;</span><br><span class="line">        //view in browser绑定快捷键为f12</span><br><span class="line">        "keys": ["f12"], "command": "side_bar_files_open_with",</span><br><span class="line">        "args": </span><br><span class="line">        &#123;</span><br><span class="line">            "paths": [],</span><br><span class="line">            "application": "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe",</span><br><span class="line">            "extensions":".*" //any file with extension</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">        //view in browser绑定快捷键为ctrl+f12</span><br><span class="line">        "keys": ["ctrl+f12"], "command": "side_bar_files_open_with",</span><br><span class="line">        "args": </span><br><span class="line">        &#123;</span><br><span class="line">            "paths": [],</span><br><span class="line">            "application": "C:\\Program Files (x86)\\Mozilla Firefox\\firefox.exe",</span><br><span class="line">            "extensions":".*" //any file with extension</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">]</span><br></pre></td></tr></table></figure></p>
+<h2 id="2-通用配置文件">2.通用配置文件</h2><p>即<code>Preferences -&gt; Settings User</code>文件，我的配置如下：<br><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    "<span class="attribute">color_scheme</span>": <span class="value"><span class="string">"Packages/Monokai Extended/Monokai Extended.tmTheme"</span></span>,</span><br><span class="line">    "<span class="attribute">font_size</span>": <span class="value"><span class="number">14</span></span>,</span><br><span class="line">    "<span class="attribute">ignored_packages</span>":</span><br><span class="line">    <span class="value">[</span><br><span class="line">        <span class="string">"Vintage"</span></span><br><span class="line">    ]</span>,</span><br><span class="line">    "<span class="attribute">theme</span>": <span class="value"><span class="string">"Soda Dark 3.sublime-theme"</span></span>,</span><br><span class="line">    "<span class="attribute">default_encoding</span>": <span class="value"><span class="string">"UTF-8"</span></span>,</span><br><span class="line">    "<span class="attribute">tab_size</span>": <span class="value"><span class="number">4</span></span>,</span><br><span class="line">    "<span class="attribute">translate_tabs_to_spaces</span>": <span class="value"><span class="literal">true</span></span><br><span class="line"></span>&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="3-右键快捷键">3.右键快捷键</h2><p>对于portable版本来说，没有文件右键快捷键，我们可以在注册表中添加快捷键，打开注册表在<code>HKEY_CLASSES_ROOT -&gt; * -&gt; shell</code>下面新建Sublime Text项，再在新建的Sublime Text项下面新建一个command项，将command项的数值数据设置为sublime.exe的路径，并在后面加一个<code>%1</code>，比如我的<code>D:\SystemTools\Sublime Text\sublime_text.exe %1</code></p>
+
+      
+    </div>
+    
+    <footer>
+      <div class="alignleft">
+      
+  
+  <div class="categories">
+    <a href="/categories/前端/">前端</a>
+  </div>
+
+      
+  
+  <div class="tags">
+    <a href="/tags/Sublime/">Sublime</a>
+  </div>
+
+      </div>
+      <div class="clearfix"></div>
+    </footer>
+    
+  </div>
+</article>
+
+
+<section id="comment">
+  
+            <!-- Duoshuo Comment BEGIN -->
+            <div class="ds-thread"></div>
+            <script type="text/javascript">
+                var duoshuoQuery = {short_name:"sshuair"};
+                (function() {
+                    var ds = document.createElement('script');
+                    ds.type = 'text/javascript';ds.async = true;
+                    ds.src = 'http://static.duoshuo.com/embed.js';
+                    ds.charset = 'UTF-8';
+                    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
+                })();
+            </script>
+            <!-- Duoshuo Comment END -->
+      
+  
+</section>
+
+</div></div>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer"><div class="inner"><div class="alignleft">
+  <p>
+  
+    &copy; 2015 sshuair
+  
+  </p>
+  <p>
+    Powered by <a href="http://hexo.io/" >Hexo</a> 
+    and Theme by <a href="http://jiabin.tk" >Byron</a> based on <a href="https://github.com/willerce/hexo-theme-noderce" >Noderce</a>
+  </p>
+
+</div>
+<div class="clearfix"></div></div></footer>
+  <script type="text/javascript">
+
+</script>
+
+</body>
+</html>
